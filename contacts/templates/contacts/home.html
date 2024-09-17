@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact List{% endblock %}
+
+{% block content %}
+<h1>Contact List</h1>
+<a href="{% url 'add_contact' %}" class="btn btn-primary mb-3">Add Contact</a>
+
+{% if contacts %}
+    <ul class="list-group">
+        {% for contact in contacts %}
+        <li class="list-group-item">
+            <a href="{% url 'contact_detail' contact.pk %}">{{ contact.first_name }}</a>
+            - {{ contact.email }} - {{ contact.phone }}
+            <a href="{% url 'edit_contact' contact.pk %}" class="btn btn-secondary btn-sm">Edit</a>
+            <a href="{% url 'delete_contact' contact.pk %}" class="btn btn-danger btn-sm">Delete</a>
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No contacts found.</p>
+{% endif %}
+{% endblock %}

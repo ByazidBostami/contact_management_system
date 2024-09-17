@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Contact Management System{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <header class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'home' %}">Contact Management</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'add_contact' %}">Add Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">View Contacts</a>
+                </li>
+         
+                
+                <li class="nav-item">
+                    <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'home' %}">
+                        <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search Contacts" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                    
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'admin:index' %}">Login</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container mt-4">
+        {% block content %}
+       
+        {% endblock %}
+    </div>
+</body>
+</html>
